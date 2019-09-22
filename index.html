@@ -99,6 +99,7 @@
 <div class="container col-md-3">
 	<div class="page-header"><h3>#tanzaniadevelopmenttrust stats</h3></div>
 	<div class="mypanel2"><h3></h3></div>
+	<div class="page-header"><h3>#crowd2map hashtag main numbers</h3></div>
 	<div class="mypanel"></div>
 
 </div>
@@ -177,6 +178,21 @@ window.onload = function() {
 						$(".mypanel2").html(summaryTDT);
 				});	
 
+	$.getJSON( OSMAPI + "group-summaries/" + "crowd2map", function(data) {
+        
+		var summary = `
+					
+			<b>Number of volunteers:</b> ${data.crowd2map.users}<br>
+			<b>Length of added road network:</b> ${data.crowd2map.road_km_add + data.crowd2map.road_km_mod} km<br>
+			<b>Added POI (Point of interest):</b> ${data.crowd2map.poi_count_add + data.crowd2map.poi_count_mod}<br>
+			<b>Added buildings:</b> ${data.crowd2map.building_count_add + data.crowd2map.building_count_mod}<br>
+			<b>Total edits:</b> ${data.crowd2map.edits}<br>
+			<b>Last updated:</b> ${data.crowd2map.last_updated} <br><br>`
+                    
+      $(".mypanel").html(summary);
+    
+		});
+		
 
 
 
